@@ -1,0 +1,23 @@
+Commit: Introduce XXX_lite_MAJOR, -MINOR, -PATCH, -VERSION
+
+Header:
+
+#define  XXX_lite_MAJOR  0
+#define  XXX_lite_MINOR  3
+#define  XXX_lite_PATCH  0
+#define  XXX_lite_VERSION  XXX_STRINGIFY(XXX_lite_MAJOR) "." XXX_STRINGIFY(XXX_lite_MINOR) "." XXX_STRINGIFY(XXX_lite_PATCH)
+
+#define XXX_STRINGIFY(  x )  XXX_STRINGIFY_( x )
+#define XXX_STRINGIFY_( x )  #x
+
+
+First Test in XXX-main.t.cpp:
+
+CASE( "XXX-lite version" "[.version]" )
+{
+    XXX_PRESENT( XXX_lite_MAJOR );
+    XXX_PRESENT( XXX_lite_MINOR );
+    XXX_PRESENT( XXX_lite_PATCH );
+    XXX_PRESENT( XXX_lite_VERSION );
+}
+
