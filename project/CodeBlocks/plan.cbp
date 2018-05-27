@@ -21,6 +21,9 @@
 		<Unit filename="../../file/LICENSE.txt" />
 		<Unit filename="../../file/appveyor.yml" />
 		<Unit filename="../../file/test/CMakeLists.txt" />
+		<Unit filename="../../file/test/t.bat" />
+		<Unit filename="../../file/test/tc.bat" />
+		<Unit filename="../../file/test/tg.bat" />
 		<Unit filename="../../link/01-kanbanflow-license-bsl.url" />
 		<Unit filename="../../link/02-kanbanflow-std-version.url" />
 		<Unit filename="../../link/03-kanbanflow-prj-version.url" />
