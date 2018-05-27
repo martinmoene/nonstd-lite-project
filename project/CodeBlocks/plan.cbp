@@ -16,7 +16,11 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="../../file/.travis.yml" />
+		<Unit filename="../../file/CMakeLists.txt" />
 		<Unit filename="../../file/LICENSE.txt" />
+		<Unit filename="../../file/appveyor.yml" />
+		<Unit filename="../../file/test/CMakeLists.txt" />
 		<Unit filename="../../link/01-kanbanflow-license-bsl.url" />
 		<Unit filename="../../link/02-kanbanflow-std-version.url" />
 		<Unit filename="../../link/03-kanbanflow-prj-version.url" />
@@ -24,10 +28,11 @@
 		<Unit filename="../../plan/02-plan-std-version.txt" />
 		<Unit filename="../../plan/03-plan-prj-version.txt" />
 		<Unit filename="../../plan/04-plan-force-use.txt" />
-		<Unit filename="../../plan/05-plan-build-batch.txt" />
-		<Unit filename="../../plan/06-plan-build-cmake.txt" />
-		<Unit filename="../../plan/07-plan-build-appveyor.txt" />
-		<Unit filename="../../plan/08-plan-build-travis.txt" />
+		<Unit filename="../../plan/05-plan-build-attr-ext-vis.txt" />
+		<Unit filename="../../plan/06-plan-build-batch.txt" />
+		<Unit filename="../../plan/07-plan-build-cmake.txt" />
+		<Unit filename="../../plan/08-plan-build-appveyor.txt" />
+		<Unit filename="../../plan/09-plan-build-travis.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

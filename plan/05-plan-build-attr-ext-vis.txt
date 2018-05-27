@@ -1,0 +1,19 @@
+Commit: Allow for gcc option -fwhole-program
+
+
+Header:
+
+// Attribute externally visible for -fwhole-program:
+
+#if defined __GNUC__ && ! defined __clang__
+# define any_ATTRIBUTE_EXT_VIS  __attribute__((externally_visible))
+#else
+# define any_ATTRIBUTE_EXT_VIS
+#endif
+
+extern lest::tests & specification() any_ATTRIBUTE_EXT_VIS;
+
+
+Readme:
+
+(nothing)
