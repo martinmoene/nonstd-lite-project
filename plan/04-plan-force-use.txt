@@ -1,17 +1,37 @@
-Commit: Introduce non-automatic selection of std::XXX, nonstd::XXX
+Commit: Introduce explicit selection of std::xxx, nonstd::xxx
 
 
 Header:
-TBD
+
+#if defined(__has_include )
+# define xxx_HAS_INCLUDE( arg )  __has_include( arg )
+#else
+# define xxx_HAS_INCLUDE( arg )  0
+#endif
+
+#if xxx_CPP17_OR_GREATER && xxx_HAS_INCLUDE( <xxx> )
+# define xxx_HAVE_STD_XXX  1
+#else
+# define xxx_HAVE_STD_XXX  0
+#endif
+
+#define xxx_XXX_DEFAULT  0
+#define xxx_XXX_LITE     1
+#define xxx_XXX_STD      2
+
+#if !defined( xxx_CONFIG_SELECT_XXX )
+# define xxx_CONFIG_SELECT_XXX  ( xxx_HAVE_STD_XXX ? xxx_XXX_STD : xxx_XXX_LITE )
+#endif
+
+// Using std::xxx:
+
+#if xxx_CONFIG_SELECT_XXX == xxx_XXX_STD
 
 
 Readme:
 
-### Select `std::XXX` or `nonstd::XXX`
-At default, *XXX lite* uses `std::XXX` if it is available and lets you use it via namespace `nonstd`. You can however override this default and explicitly request to use `std::XXX` as `nonstd::XXX` or use XXX lite's `nonstd::XXX` via the following macros.
+### Select `std::xxx` or `nonstd::xxx`
+At default, *xxx lite* uses `std::xxx` if it is available and lets you use it via namespace `nonstd`. You can however override this default and explicitly request to use `std::xxx` or xxx lite's `nonstd::xxx` as `nonstd::xxx` via the following macros.
 
--D<b>XXX_CONFIG_SELECT_STD_XXX</b>=1  
-Define this to 1 to select `std::XXX` as `nonstd::XXX`. Default is undefined.
-
--D<b>XXX_CONFIG_SELECT_NONSTD_XXX</b>=1  
-Define this to 1 to select *XXX lite*'s `nonstd::XXX`. Default is undefined.
+-D<b>xxx\_CONFIG\_SELECT\_XXX</b>=xxx_XXX_DEFAULT  
+Define this to `xxx_XXX_STD` to select `std::xxx` as `nonstd::xxx`. Define this to `xxx_XXX_LITE` to select `nonstd::xxx` as `nonstd::xxx`. Default is undefined, which has the same effect as defining to `any_XXX_DEFAULT`.
