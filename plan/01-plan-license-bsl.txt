@@ -1,5 +1,8 @@
 Commit: Re-license under Boost Software License (BSL)
 
+File: file/LICENSE.txt
+
+
 CMake:
 
 # Distributed under the Boost Software License, Version 1.0. 

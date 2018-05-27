@@ -1,17 +1,7 @@
-Commit: Introduce non-automatic selection of std::XXX, nonstd::XXX
+Commit: 
 
-
-Header:
-TBD
-
+CMake files:
+- ./CMakeLists.txt
+- test/CMakeLists.txt
 
 Readme:
-
-### Select `std::XXX` or `nonstd::XXX`
-At default, *XXX lite* uses `std::XXX` if it is available and lets you use it via namespace `nonstd`. You can however override this default and explicitly request to use `std::XXX` as `nonstd::XXX` or use XXX lite's `nonstd::XXX` via the following macros.
-
--D<b>XXX_CONFIG_SELECT_STD_XXX</b>=1  
-Define this to 1 to select `std::XXX` as `nonstd::XXX`. Default is undefined.
-
--D<b>XXX_CONFIG_SELECT_NONSTD_XXX</b>=1  
-Define this to 1 to select *XXX lite*'s `nonstd::XXX`. Default is undefined.
