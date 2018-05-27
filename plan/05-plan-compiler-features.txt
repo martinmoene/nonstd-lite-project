@@ -1,0 +1,173 @@
+Commit: 
+
+
+Header:
+
+
+Readme:
+
+(nothing)
+
+
+___
+
+// Presence of language and library features:
+
+#define xxx_HAVE( feature )  ( xxx_HAVE_##feature )
+
+#ifdef _HAS_CPP0X
+# define xxx_HAS_CPP0X  _HAS_CPP0X
+#else
+# define xxx_HAS_CPP0X  0
+#endif
+
+#define xxx_CPP11_80   (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 80)
+#define xxx_CPP11_90   (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 90)
+#define xxx_CPP11_100  (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 100)
+#define xxx_CPP11_110  (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 110)
+#define xxx_CPP11_120  (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 120)
+#define xxx_CPP11_140  (xxx_CPP11_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 140)
+
+#define xxx_CPP14_000  (xxx_CPP14_OR_GREATER)
+#define xxx_CPP14_120  (xxx_CPP14_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 120)
+#define xxx_CPP14_140  (xxx_CPP14_OR_GREATER || xxx_COMPILER_MSVC_VERSION >= 140)
+
+#define xxx_CPP17_000  (xxx_CPP17_OR_GREATER)
+
+// Presence of C++11 language features:
+
+#define xxx_HAVE_AUTO                  xxx_CPP11_100
+#define xxx_HAVE_NULLPTR               xxx_CPP11_100
+#define xxx_HAVE_STATIC_ASSERT         xxx_CPP11_100
+
+#define xxx_HAVE_DEFAULT_FUNCTION_TEMPLATE_ARG \
+                                        xxx_CPP11_120
+
+#define xxx_HAVE_ALIAS_TEMPLATE        xxx_CPP11_140
+#define xxx_HAVE_CONSTEXPR_11          xxx_CPP11_140
+#define xxx_HAVE_EXPLICIT_CONVERSION   xxx_CPP11_140
+#define xxx_HAVE_IS_DEFAULT            xxx_CPP11_140
+#define xxx_HAVE_IS_DELETE             xxx_CPP11_140
+#define xxx_HAVE_NOEXCEPT              xxx_CPP11_140
+
+// Presence of C++14 language features:
+
+#define xxx_HAVE_CONSTEXPR_14          xxx_CPP14_000
+
+// Presence of C++17 language features:
+
+#define xxx_HAVE_NODISCARD             xxx_CPP17_000
+#define xxx_HAVE_NORETURN              xxx_CPP17_000
+
+// MSVC: template parameter deduction guides since Visual Studio 2017 v15.7
+
+#define xxx_HAVE_DEDUCTION_GUIDES     (xxx_CPP17_OR_GREATER && ! xxx_BETWEEN( xxx_COMPILER_MSVC_VERSION, 1, 999 ))
+
+// Presence of C++ library features:
+
+#define xxx_HAVE_TYPE_TRAITS           xxx_CPP11_90
+
+#define xxx_HAVE_ARRAY                 xxx_CPP11_110
+#define xxx_HAVE_LONGLONG              xxx_CPP11_80
+#define xxx_HAVE_REMOVE_CONST          xxx_CPP11_110
+#define xxx_HAVE_SNPRINTF              xxx_CPP11_140
+
+#define xxx_HAVE_CONDITIONAL           xxx_CPP11_120
+
+#define xxx_HAVE_CONTAINER_DATA_METHOD (xxx_CPP11_140 || ( xxx_COMPILER_MSVC_VERSION >= 90 && xxx_HAS_CPP0X ))
+
+#define xxx_HAVE_ADDRESSOF             xxx_CPP17_000
+#define xxx_HAVE_BYTE                  xxx_CPP17_000
+#define xxx_HAVE_DATA                  xxx_CPP17_000
+
+// C++ feature usage:
+
+#if xxx_HAVE_ADDRESSOF
+# define xxx_ADDRESSOF(x)  std::addressof(x)
+#else
+# define xxx_ADDRESSOF(x)  (&x)
+#endif
+
+#if xxx_HAVE_CONSTEXPR_11
+# define xxx_constexpr constexpr
+#else
+# define xxx_constexpr /*xxx_constexpr*/
+#endif
+
+#if xxx_HAVE_CONSTEXPR_14
+# define xxx_constexpr14 constexpr
+#else
+# define xxx_constexpr14 /*xxx_constexpr*/
+#endif
+
+#if xxx_HAVE_EXPLICIT_CONVERSION
+# define xxx_explicit explicit
+#else
+# define xxx_explicit /*explicit*/
+#endif
+
+#if xxx_HAVE_INLINE_NAMESPACE
+# define xxx_inline_ns inline
+#else
+# define xxx_inline_ns /*inline*/
+#endif
+
+#if xxx_HAVE_IS_DELETE
+# define xxx_is_delete = delete
+#else
+# define xxx_is_delete
+#endif
+
+#if xxx_HAVE_IS_DELETE
+# define xxx_is_delete_access public
+#else
+# define xxx_is_delete_access private
+#endif
+
+#if xxx_HAVE_NOEXCEPT && ! xxx_CONFIG_CONTRACT_VIOLATION_THROWS_V
+# define xxx_noexcept noexcept
+#else
+# define xxx_noexcept /*noexcept*/
+#endif
+
+#if xxx_HAVE_NULLPTR
+# define xxx_nullptr nullptr
+#else
+# define xxx_nullptr NULL
+#endif
+
+#if xxx_HAVE_NODISCARD
+# define xxx_nodiscard [[nodiscard]]
+#else
+# define xxx_nodiscard /*[[nodiscard]]*/
+#endif
+
+#if xxx_HAVE_NORETURN
+# define xxx_noreturn [[noreturn]]
+#else
+# define xxx_noreturn /*[[noreturn]]*/
+#endif
+
+// Other features:
+
+#define xxx_HAVE_CONSTRAINED_SPAN_CONTAINER_CTOR  \
+    ( xxx_HAVE_DEFAULT_FUNCTION_TEMPLATE_ARG && xxx_HAVE_CONTAINER_DATA_METHOD )
+
+// Additional includes:
+
+#if xxx_HAVE( ADDRESSOF )
+# include <memory>
+#endif
+
+#if xxx_HAVE( ARRAY )
+# include <array>
+#endif
+
+#if xxx_HAVE( BYTE )
+# include <cstddef>
+#endif
+
+#if xxx_HAVE( TYPE_TRAITS )
+# include <type_traits>
+#endif
+
