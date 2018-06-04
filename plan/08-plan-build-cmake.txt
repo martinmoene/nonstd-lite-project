@@ -1,7 +1,14 @@
 Commit: 
 
-CMake files:
-- ./CMakeLists.txt
-- test/CMakeLists.txt
+CMake file ./CMakeLists.txt
+- CMake package
+- 
+
+CMake file test/CMakeLists.txt
+- ...
+
+Python script to update version
+- script/update [version]
+
 
 Readme:

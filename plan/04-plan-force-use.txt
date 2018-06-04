@@ -16,23 +16,23 @@ Header:
 // C++ language version detection (C++20 is speculative):
 // Note: VC14.0/1900 (VS2015) lacks too much from C++14.
 
-#ifndef   any_CPLUSPLUS
+#ifndef   xxx_CPLUSPLUS
 # ifdef  _MSVC_LANG
-#  define any_CPLUSPLUS  (_MSC_VER == 1900 ? 201103L : _MSVC_LANG )
+#  define xxx_CPLUSPLUS  (_MSC_VER == 1900 ? 201103L : _MSVC_LANG )
 # else
-#  define any_CPLUSPLUS  __cplusplus
+#  define xxx_CPLUSPLUS  __cplusplus
 # endif
 #endif
 
-#define any_CPP98_OR_GREATER  ( any_CPLUSPLUS >= 199711L )
-#define any_CPP11_OR_GREATER  ( any_CPLUSPLUS >= 201103L )
-#define any_CPP14_OR_GREATER  ( any_CPLUSPLUS >= 201402L )
-#define any_CPP17_OR_GREATER  ( any_CPLUSPLUS >= 201703L )
-#define any_CPP20_OR_GREATER  ( any_CPLUSPLUS >= 202000L )
+#define xxx_CPP98_OR_GREATER  ( xxx_CPLUSPLUS >= 199711L )
+#define xxx_CPP11_OR_GREATER  ( xxx_CPLUSPLUS >= 201103L )
+#define xxx_CPP14_OR_GREATER  ( xxx_CPLUSPLUS >= 201402L )
+#define xxx_CPP17_OR_GREATER  ( xxx_CPLUSPLUS >= 201703L )
+#define xxx_CPP20_OR_GREATER  ( xxx_CPLUSPLUS >= 202000L )
 
 // use C++17 std::xxx if available and requested:
 
-#if xxx_CPP17_OR_GREATER && defined(__has_include ) && __has_include( <any> )
+#if xxx_CPP17_OR_GREATER && defined(__has_include ) && __has_include( <xxx> )
 # define xxx_HAVE_STD_XXX  1
 #else
 # define xxx_HAVE_STD_XXX  0
@@ -40,7 +40,7 @@ Header:
 
 #define xxx_USES_STD_XXX  ( (xxx_CONFIG_SELECT_XXX == xxx_XXX_STD) || ((xxx_CONFIG_SELECT_XXX == xxx_XXX_DEFAULT) && xxx_HAVE_STD_XXX) )
 
-// Using std::any:
+// Using std::xxx:
 
 #if xxx_USES_STD_XXX
 

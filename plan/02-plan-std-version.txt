@@ -1,31 +1,31 @@
-Commit: Introduce standard selection macro, XXX_CPLUSPLUS
+Commit: Introduce standard selection macro, xxx_CPLUSPLUS
 
 Header:
 
 // C++ language version detection (C++20 is speculative):
 // Note: VC14.0/1900 (VS2015) lacks too much from C++14.
 
-#ifndef   XXX_CPLUSPLUS
+#ifndef   xxx_CPLUSPLUS
 # ifdef  _MSVC_LANG
-#  define XXX_CPLUSPLUS  (_MSC_VER == 1900 ? 201103L : _MSVC_LANG )
+#  define xxx_CPLUSPLUS  (_MSC_VER == 1900 ? 201103L : _MSVC_LANG )
 # else
-#  define XXX_CPLUSPLUS  __cplusplus
+#  define xxx_CPLUSPLUS  __cplusplus
 # endif
 #endif
 
-#define XXX_CPP98_OR_GREATER  ( XXX_CPLUSPLUS >= 199711L )
-#define XXX_CPP11_OR_GREATER  ( XXX_CPLUSPLUS >= 201103L )
-#define XXX_CPP14_OR_GREATER  ( XXX_CPLUSPLUS >= 201402L )
-#define XXX_CPP17_OR_GREATER  ( XXX_CPLUSPLUS >= 201703L )
-#define XXX_CPP20_OR_GREATER  ( XXX_CPLUSPLUS >= 202000L )
+#define xxx_CPP98_OR_GREATER  ( xxx_CPLUSPLUS >= 199711L )
+#define xxx_CPP11_OR_GREATER  ( xxx_CPLUSPLUS >= 201103L )
+#define xxx_CPP14_OR_GREATER  ( xxx_CPLUSPLUS >= 201402L )
+#define xxx_CPP17_OR_GREATER  ( xxx_CPLUSPLUS >= 201703L )
+#define xxx_CPP20_OR_GREATER  ( xxx_CPLUSPLUS >= 202000L )
 
 // C++ language version (represent 98 as 3):
 
-#define XXX_CPLUSPLUS_V  ( XXX_CPLUSPLUS / 100 - (XXX_CPLUSPLUS > 200000 ? 2000 : 1994) )
+#define xxx_CPLUSPLUS_V  ( xxx_CPLUSPLUS / 100 - (xxx_CPLUSPLUS > 200000 ? 2000 : 1994) )
 
 
 Readme:
 
 ### Standard selection macro
-\-D<b>XXX\_CPLUSPLUS</b>=199711L
+\-D<b>xxx\_CPLUSPLUS</b>=199711L
 Define this macro to override the auto-detection of the supported C++ standard, if your compiler does not set the `__cpluplus` macro correctly.
