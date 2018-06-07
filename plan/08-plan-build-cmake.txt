@@ -1,8 +1,8 @@
 Commit: 
 
 CMake file ./CMakeLists.txt
-- CMake package
-- 
+1. Add interface library (easy)
+2. Make it a CMake package (harder)
 
 CMake file test/CMakeLists.txt
 - ...

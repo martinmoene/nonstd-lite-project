@@ -2,6 +2,12 @@ Commit: Re-license under Boost Software License (BSL)
 
 File: file/LICENSE.txt
 
+All: Update Copyright 20xx-2018 by Martin Moene
+
+Wandbox: update header, URL
+GitHub: tag/release
+Godbolt: update header, URL
+
 
 CMake:
 
@@ -21,5 +27,5 @@ Readme:
 
 License
 -------
-*XXX lite* is distributed under the [Boost Software License](https://github.com/martinmoene/XXXX-lite/blob/master/LICENSE.txt).
+*XXX lite* is distributed under the [Boost Software License](LICENSE.txt).
 
