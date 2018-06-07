@@ -13,9 +13,9 @@
 		<Project filename="../../../span-lite/project/CodeBlocks/span-lite.cbp" />
 		<Project filename="../../../status_value/project/CodeBlocks/status_value.cbp" />
 		<Project filename="../../../string-view-lite/project/CodeBlocks/string-view-lite.cbp" />
+		<Project filename="../../../type/project/CodeBlocks/type.cbp" />
 		<Project filename="../../../value-ptr-lite/project/CodeBlocks/value-ptr-lite.cbp" />
 		<Project filename="../../../variant-lite/project/CodeBlocks/variant-lite.cbp" />
-		<Project filename="../../../type/project/CodeBlocks/type.cbp" />
 		<Project filename="plan.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>
