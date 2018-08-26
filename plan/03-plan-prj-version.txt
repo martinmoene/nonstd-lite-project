@@ -5,6 +5,7 @@ Header:
 #define xxx_lite_MAJOR  0
 #define xxx_lite_MINOR  3
 #define xxx_lite_PATCH  0
+
 #define xxx_lite_VERSION  xxx_STRINGIFY(xxx_lite_MAJOR) "." xxx_STRINGIFY(xxx_lite_MINOR) "." xxx_STRINGIFY(xxx_lite_PATCH)
 
 #define xxx_STRINGIFY(  x )  xxx_STRINGIFY_( x )
@@ -20,6 +21,16 @@ CASE( "xxx-lite version" "[.version]" )
     xxx_PRESENT( xxx_lite_PATCH );
     xxx_PRESENT( xxx_lite_VERSION );
 }
+
+
+General order of tests xxx-main.t.cpp:
+
+xxx-lite version[.version]
+__cplusplus[.stdc++]
+compiler version[.compiler]
+configuration of xxx-lite [.config]
+presence of C++ language features[.stdlanguage]
+presence of C++ library features[.stdlibrary]
 
 
 Add script: 
