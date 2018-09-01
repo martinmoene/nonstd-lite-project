@@ -31,15 +31,15 @@ table = (
 #        , r'\xxx_lite_version\s+=\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$'
 #        , 'xxx_lite_version = "{major}.{minor}.{patch}"\n' )
 
-    , ( 'include/nonstd/any.hpp'
+    , ( 'include/nonstd/xxx.hpp'
         , r'\#define\s+xxx_lite_MAJOR\s+[0-9]+\s*$'
         , '#define xxx_lite_MAJOR  {major}' )
 
-    , ( 'include/nonstd/any.hpp'
+    , ( 'include/nonstd/xxx.hpp'
         , r'\#define\s+xxx_lite_MINOR\s+[0-9]+\s*$'
         , '#define xxx_lite_MINOR  {minor}' )
 
-    , ( 'include/nonstd/any.hpp'
+    , ( 'include/nonstd/xxx.hpp'
         , r'\#define\s+xxx_lite_PATCH\s+[0-9]+\s*$'
         , '#define xxx_lite_PATCH  {patch}\n' )
 )
