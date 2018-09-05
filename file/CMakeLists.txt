@@ -7,10 +7,17 @@
 
 cmake_minimum_required( VERSION 3.5 )
 
+# xxx-lite version, updated by script/update-version.py:
+
+set( xxx_lite_version "9.9.9" )
+
 # Enable building and performing of tests and building of examples:
 
 option( XXX_LITE_OPT_BUILD_TESTS    "Build and perform xxx-lite tests" ON )
 option( XXX_LITE_OPT_BUILD_EXAMPLES "Build xxx-lite examples" OFF )
+
+option( XXX_LITE_OPT_SELECT_STDXXX    "Select std::xxx"    OFF )
+option( XXX_LITE_OPT_SELECT_NONSTDXXX "Select nonstd::xxx" OFF )
 
 project( xxx_lite LANGUAGES CXX )
 

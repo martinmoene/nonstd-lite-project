@@ -2,7 +2,7 @@
 #
 # https://github.com/martinmoene/xxx-lite
 #
-# Distributed under the Boost Software License, Version 1.0. 
+# Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
 cmake_minimum_required( VERSION 3.5 )
@@ -16,12 +16,22 @@ set( SOURCES   ${MAIN_BASE}.t.cpp xxx.t.cpp )
 set( HDRDIR  ${PROJECT_SOURCE_DIR}/../include/nonstd )
 set( HDRPATH ${HDRDIR}/${HDRNAME} )
 
+# option text to Boolean:
+
+macro( opt option_text var )
+    if( ${option_text} )
+        set( ${var} 1 )
+    else()
+        set( ${var} 0 )
+    endif()
+endmacro()
+
+#opt( XXX_LITE_OPT_...  xxx_CONFIG_... )
+
 # Configure xxx-lite for testing:
 
+set( DEFCMN  "" )
 set( OPTIONS "" )
-set( XXX_CONFIG
-    -Dxxx_...
-)
 
 set( HAS_STD_FLAGS  FALSE )
 set( HAS_CPP98_FLAG FALSE )
@@ -35,7 +45,7 @@ if( MSVC )
     set( HAS_STD_FLAGS TRUE )
 
     set( OPTIONS     -W3 -EHsc )
-    set( DEFINITIONS -D_SCL_SECURE_NO_WARNINGS ${XXX_CONFIG} )
+    set( DEFINITIONS -D_SCL_SECURE_NO_WARNINGS ${DEFCMN} )
 
     if( NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.00 )
         set( HAS_CPP14_FLAG TRUE )
@@ -43,15 +53,18 @@ if( MSVC )
     endif()
     if( NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.11 )
         set( HAS_CPP17_FLAG TRUE )
+        set( OPTIONS ${OPTIONS} /permissive- )
     endif()
 
 elseif( CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang" )
+
+    set( CMAKE_VERBOSE_MAKEFILE ON )
 
     set( HAS_STD_FLAGS  TRUE )
     set( HAS_CPP98_FLAG TRUE )
 
     set( OPTIONS     -Wall -Wno-missing-braces -fno-elide-constructors )
-    set( DEFINITIONS ${XXX_CONFIG} )
+    set( DEFINITIONS ${DEFCMN} )
 
     # GNU: available -std flags depends on version
     if( CMAKE_CXX_COMPILER_ID MATCHES "GNU" )
@@ -106,7 +119,7 @@ function( make_target target std )
     if( std )
         if( MSVC )
             target_compile_options( ${target} PRIVATE -std:c++${std} )
-        else()    
+        else()
             # Necessary for clang 3.x:
             target_compile_options( ${target} PRIVATE -std=c++${std} )
             # Ok for clang 4 and later:
@@ -138,12 +151,28 @@ else()
     endif()
 
     if( HAS_CPP17_FLAG )
-        make_target( ${MAIN_BASE}-cpp17.t 17 )
+        set( std17 17 )
+        if( CMAKE_CXX_COMPILER_ID MATCHES "AppleClang" )
+            set( std17 1z )
+        endif()
+        make_target( ${MAIN_BASE}-cpp17.t ${std17} )
         enable_msvs_guideline_checker( ${MAIN_BASE}-cpp17.t )
     endif()
 
     if( HAS_CPPLATEST_FLAG )
         make_target( ${MAIN_BASE}-cpplatest.t latest )
+    endif()
+endif()
+
+# with C++17, honour explicit request for std::xxx or nonstd::xxx:
+
+if( HAS_CPP17_FLAG )
+    if ( XXX_LITE_OPT_SELECT_STDSV )
+        target_compile_definitions( xxx-lite-cpp17.t PRIVATE xxx_CONFIG_SELECT_STD_XXX=1 )
+    endif()
+
+    if ( STRINGVIEW_LITE_OPT_SELECT_NONSTDSV )
+        target_compile_definitions( xxx-lite-cpp17.t PRIVATE xxx_CONFIG_SELECT_NONSTD_XXX=1 )
     endif()
 endif()
 
