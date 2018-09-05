@@ -1,10 +1,17 @@
 Commit: Introduce xxx_lite_MAJOR, -MINOR, -PATCH, -VERSION
 
+CMakeLists.txt:
+
+# xxx-lite version, updated by script/update-version.py:
+
+set( xxx_lite_version "9.9.9" )
+
+
 Header:
 
-#define xxx_lite_MAJOR  0
-#define xxx_lite_MINOR  3
-#define xxx_lite_PATCH  0
+#define xxx_lite_MAJOR  9
+#define xxx_lite_MINOR  9
+#define xxx_lite_PATCH  9
 
 #define xxx_lite_VERSION  xxx_STRINGIFY(xxx_lite_MAJOR) "." xxx_STRINGIFY(xxx_lite_MINOR) "." xxx_STRINGIFY(xxx_lite_PATCH)
 
