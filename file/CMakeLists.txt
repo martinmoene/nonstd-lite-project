@@ -16,8 +16,8 @@ set( xxx_lite_version "9.9.9" )
 option( XXX_LITE_OPT_BUILD_TESTS    "Build and perform xxx-lite tests" ON )
 option( XXX_LITE_OPT_BUILD_EXAMPLES "Build xxx-lite examples" OFF )
 
-option( XXX_LITE_OPT_SELECT_STDXXX    "Select std::xxx"    OFF )
-option( XXX_LITE_OPT_SELECT_NONSTDXXX "Select nonstd::xxx" OFF )
+option( XXX_LITE_OPT_SELECT_STD     "Select std::xxx"    OFF )
+option( XXX_LITE_OPT_SELECT_NONSTD  "Select nonstd::xxx" OFF )
 
 project( xxx_lite LANGUAGES CXX )
 

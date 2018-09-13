@@ -167,13 +167,15 @@ endif()
 # with C++17, honour explicit request for std::xxx or nonstd::xxx:
 
 if( HAS_CPP17_FLAG )
-    if ( XXX_LITE_OPT_SELECT_STDSV )
-        target_compile_definitions( xxx-lite-cpp17.t PRIVATE xxx_CONFIG_SELECT_STD_XXX=1 )
+    set( WHICH xxx_XXX_DEFAULT )
+
+    if( XXX_LITE_OPT_SELECT_STD )
+        set( WHICH xxx_XXX_STD )
+    elseif( XXX_LITE_OPT_SELECT_NONSTD )
+        set( WHICH xxx_XXX_NONSTD )
     endif()
 
-    if ( STRINGVIEW_LITE_OPT_SELECT_NONSTDSV )
-        target_compile_definitions( xxx-lite-cpp17.t PRIVATE xxx_CONFIG_SELECT_NONSTD_XXX=1 )
-    endif()
+    target_compile_definitions( ${MAIN_BASE}-cpp17.t PRIVATE xxx_CONFIG_SELECT_XXX=${WHICH} )
 endif()
 
 # configure unit tests via CTest:
