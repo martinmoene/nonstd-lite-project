@@ -39,6 +39,7 @@
 		<Unit filename="../../plan/09-plan-build-appveyor.txt" />
 		<Unit filename="../../plan/10-plan-build-travis.txt" />
 		<Unit filename="../../test/combine-any-exp-opt-var.cpp" />
+		<Unit filename="../../test/combine-exp-std-any-opt-var.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
