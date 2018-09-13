@@ -38,6 +38,7 @@
 		<Unit filename="../../plan/08-plan-build-cmake.txt" />
 		<Unit filename="../../plan/09-plan-build-appveyor.txt" />
 		<Unit filename="../../plan/10-plan-build-travis.txt" />
+		<Unit filename="../../test/combine-any-exp-opt-var.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
