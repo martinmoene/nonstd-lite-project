@@ -31,6 +31,10 @@ table = (
 #        , r'\xxx_lite_version\s+=\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$'
 #        , 'xxx_lite_version = "{major}.{minor}.{patch}"\n' )
 
+    , ( 'conanfile.py'
+        , r'version\s+=\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$'
+        , 'version = "{major}.{minor}.{patch}"' )
+
     , ( 'include/nonstd/xxx.hpp'
         , r'\#define\s+xxx_lite_MAJOR\s+[0-9]+\s*$'
         , '#define xxx_lite_MAJOR  {major}' )
