@@ -5,7 +5,7 @@ class XxxLiteConan(ConanFile):
     name = "XXX-lite"
     description = "XXX"
     license = "Boost Software License - Version 1.0. http://www.boost.org/LICENSE_1_0.txt"
-    url = "https://github.com/martinmoene/XXX.git"
+    url = "https://github.com/martinmoene/XXX-lite.git"
     exports_sources = "include/nonstd/*", "LICENSE.txt"
     build_policy = "missing"    
     author = "Martin Moene"
