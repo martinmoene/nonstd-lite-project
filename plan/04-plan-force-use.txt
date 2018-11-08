@@ -6,18 +6,18 @@ Header:
 // xxx-lite configuration:
 
 #define xxx_XXX_DEFAULT  0
-#define xxx_XXX_LITE     1
+#define xxx_XXX_NONSTD   1
 #define xxx_XXX_STD      2
 
 #if !defined( xxx_CONFIG_SELECT_XXX )
-# define xxx_CONFIG_SELECT_XXX  ( xxx_HAVE_STD_XXX ? xxx_XXX_STD : xxx_XXX_LITE )
+# define xxx_CONFIG_SELECT_XXX  ( xxx_HAVE_STD_XXX ? xxx_XXX_STD : xxx_XXX_NONSTD )
 #endif
 
 // C++ language version detection (C++20 is speculative):
 // Note: VC14.0/1900 (VS2015) lacks too much from C++14.
 
 #ifndef   xxx_CPLUSPLUS
-# ifdef  _MSVC_LANG
+# if defined(_MSVC_LANG ) && !defined(__clang__)
 #  define xxx_CPLUSPLUS  (_MSC_VER == 1900 ? 201103L : _MSVC_LANG )
 # else
 #  define xxx_CPLUSPLUS  __cplusplus
@@ -32,10 +32,14 @@ Header:
 
 // use C++17 std::xxx if available and requested:
 
-#if xxx_CPP17_OR_GREATER && defined(__has_include ) && __has_include( <xxx> )
-# define xxx_HAVE_STD_XXX  1
+#if xxx_CPP17_OR_GREATER && defined(__has_include )
+# if __has_include( <xxx> )
+#  define xxx_HAVE_STD_XXX  1
+# else
+#  define xxx_HAVE_STD_XXX  0
+# endif
 #else
-# define xxx_HAVE_STD_XXX  0
+# define  xxx_HAVE_STD_XXX  0
 #endif
 
 #define xxx_USES_STD_XXX  ( (xxx_CONFIG_SELECT_XXX == xxx_XXX_STD) || ((xxx_CONFIG_SELECT_XXX == xxx_XXX_DEFAULT) && xxx_HAVE_STD_XXX) )
