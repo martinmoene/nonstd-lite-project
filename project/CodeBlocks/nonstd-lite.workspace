@@ -6,6 +6,7 @@
 		<Project filename="../../../byte-lite/project/CodeBlocks/byte-lite.cbp" />
 		<Project filename="../../../expected-lite/project/CodeBlocks/expected-lite.cbp" />
 		<Project filename="../../../invoke-lite/project/CodeBlocks/invoke-lite.cbp" />
+		<Project filename="../../../observer-ptr/project/observer-ptr.cbp" />
 		<Project filename="../../../optional-bare/project/CodeBlocks/optional-bare.cbp" />
 		<Project filename="../../../optional-fun-lite/project/CodeBlocks/optional-fun-lite.cbp" />
 		<Project filename="../../../optional-lite/project/CodeBlocks/optional-lite.cbp" />
