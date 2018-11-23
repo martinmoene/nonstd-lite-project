@@ -11,9 +11,17 @@ cmake_minimum_required( VERSION 3.5 )
 
 set( xxx_lite_version "9.9.9" )
 
+# Toplevel or subproject:
+
+if ( CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR )
+    set( xxx_IS_TOPLEVEL_PROJECT TRUE )
+else()
+    set( xxx_IS_TOPLEVEL_PROJECT FALSE )
+endif()
+
 # Enable building and performing of tests and building of examples:
 
-option( XXX_LITE_OPT_BUILD_TESTS    "Build and perform xxx-lite tests" ON )
+option( XXX_LITE_OPT_BUILD_TESTS    "Build and perform xxx-lite tests" ${xxx_IS_TOPLEVEL_PROJECT} )
 option( XXX_LITE_OPT_BUILD_EXAMPLES "Build xxx-lite examples" OFF )
 
 option( XXX_LITE_OPT_SELECT_STD     "Select std::xxx"    OFF )
