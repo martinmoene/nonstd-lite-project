@@ -12,7 +12,7 @@ cmake_minimum_required( VERSION 3.5 )
 project(
     xxx_lite
     VERSION 9.9.9
-    DESCRIPTION "XXX"
+#   DESCRIPTION "XXX"
 #   HOMEPAGE_URL "https://github.com/martinmoene/xxx-lite"
     LANGUAGES CXX )
 
