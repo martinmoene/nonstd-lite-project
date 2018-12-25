@@ -7,9 +7,16 @@
 
 cmake_minimum_required( VERSION 3.5 )
 
-# xxx-lite version, updated by script/update-version.py:
+# xxx-lite project and version, updated by script/update-version.py:
 
-set( xxx_lite_version "9.9.9" )
+project(
+    xxx_lite
+    VERSION 9.9.9
+    DESCRIPTION "XXX"
+#   HOMEPAGE_URL "https://github.com/martinmoene/xxx-lite"
+    LANGUAGES CXX )
+
+set( ${PROJECT_NAME}_version "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}" )
 
 # Toplevel or subproject:
 
@@ -19,7 +26,7 @@ else()
     set( xxx_IS_TOPLEVEL_PROJECT FALSE )
 endif()
 
-# Enable building and performing of tests and building of examples:
+# If toplevel project, enable building and performing of tests, disable building of examples:
 
 option( XXX_LITE_OPT_BUILD_TESTS    "Build and perform xxx-lite tests" ${xxx_IS_TOPLEVEL_PROJECT} )
 option( XXX_LITE_OPT_BUILD_EXAMPLES "Build xxx-lite examples" OFF )
@@ -44,7 +51,7 @@ target_include_directories(
 
 # Installation:
 
-install( 
+install(
     DIRECTORY ${CMAKE_SOURCE_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} )
 
 # If requested, build and perform tests, build examples:
