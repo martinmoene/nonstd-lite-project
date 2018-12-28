@@ -19,5 +19,6 @@
 		<Project filename="../../../value-ptr-lite/project/CodeBlocks/value-ptr-lite.cbp" />
 		<Project filename="../../../variant-lite/project/CodeBlocks/variant-lite.cbp" />
 		<Project filename="plan.cbp" />
+		<Project filename="cmake.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

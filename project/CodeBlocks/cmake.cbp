@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Project - CMake" />
+		<Option compiler="gcc" />
+		<Option show_notes="0">
+			<notes>
+				<![CDATA[Change license from MIT to BSL]]>
+			</notes>
+		</Option>
+		<Build>
+			<Target title="default">
+				<Option output="any-lite" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Unit filename="../../cmake/consumer/CMakeLists.txt" />
+		<Unit filename="../../cmake/consumer/script/build.bat" />
+		<Unit filename="../../cmake/consumer/src/consumer.cpp" />
+		<Unit filename="../../cmake/producer/CMakeLists.txt" />
+		<Unit filename="../../cmake/producer/cmake/producer-lite-config.cmake.in" />
+		<Unit filename="../../cmake/producer/include/producer/producer.hpp" />
+		<Unit filename="../../cmake/producer/script/build-install.bat" />
+		<Unit filename="../../cmake/producer/test/CMakeLists.txt" />
+		<Unit filename="../../cmake/producer/test/producer.t.cpp" />
+		<Unit filename="../../cmake/script/producer-consumer.bat" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
