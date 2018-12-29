@@ -9,14 +9,36 @@ project(
 #   HOMEPAGE_URL "https://github.com/martinmoene/nonstd-lite-project/cmake"
     LANGUAGES CXX )
 
-set( package_name "producer-lite" )
+# Toplevel or subproject:
 
-message( STATUS "Project '${PROJECT_NAME}', package '${package_name}' version: '${${PROJECT_NAME}_VERSION}'")
+if ( CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME )
+    set( pl_IS_TOPLEVEL_PROJECT TRUE )
+else()
+    set( pl_IS_TOPLEVEL_PROJECT FALSE )
+endif()
+
+# Testing: if toplevel project, build and perform tests:
+
+if ( pl_IS_TOPLEVEL_PROJECT )
+    enable_testing()
+    add_subdirectory( test )
+endif()
+
+#
+# Interface, installation and packaging
+#
 
 # CMake helpers:
 
 include( GNUInstallDirs )
 include( CMakePackageConfigHelpers )
+
+# Package information:
+
+set( package_name    "producer-lite" )
+set( package_version "${${PROJECT_NAME}_VERSION}" )
+
+message( STATUS "Project '${PROJECT_NAME}', package '${package_name}' version: '${package_version}'")
 
 # Interface library:
 
@@ -29,13 +51,12 @@ add_library(
 target_include_directories(
     ${package_name}
     INTERFACE
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>"
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>" )
 
 # Package configuration:
 # Note: package_name and package_target are used in package_config_in
 
-set( package_version        "${${PROJECT_NAME}_VERSION}" )
 set( package_folder         "${package_name}" )
 set( package_nspace         "${package_name}::" )
 set( package_target         "${package_name}-targets" )
@@ -76,14 +97,8 @@ install(
 )
 
 install(
-    DIRECTORY   "${CMAKE_SOURCE_DIR}/include/"
+    DIRECTORY   "${CMAKE_SOURCE_DIR}/include"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
-
-# Testing:
-
-enable_testing()
-
-add_subdirectory( test )
 
 # end of file
