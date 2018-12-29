@@ -1,14 +1,16 @@
-Commit: 
+Commit:
 
 CMake file ./CMakeLists.txt
-1. Add interface library (easy)
-2. Make it a CMake package (harder)
+1. Add interface library
+2. Add installation commands
+3. Make it a CMake config-file package
 
 CMake file test/CMakeLists.txt
-- ...
+- Use target_link_libraries:
+  - set( PACKAGE xxx-lite )
+  - target_link_libraries( ${target} PRIVATE ${PACKAGE} )
 
 Python script to update version
 - script/update [version]
-
 
 Readme:
