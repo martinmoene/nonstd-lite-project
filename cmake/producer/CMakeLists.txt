@@ -33,16 +33,25 @@ target_include_directories(
         "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>" )
 
 # Package configuration:
+# Note: package_name and package_target are used in package_config_in
+
+set( package_version        "${${PROJECT_NAME}_VERSION}" )
+set( package_folder         "${package_name}" )
+set( package_nspace         "${package_name}::" )
+set( package_target         "${package_name}-targets" )
+set( package_config         "${package_name}-config.cmake" )
+set( package_config_in      "${package_name}-config.cmake.in" )
+set( package_config_version "${package_name}-config-version.cmake" )
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/${package_name}-config.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/${package_name}-config.cmake"
-    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_name}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/${package_config_in}"
+    "${CMAKE_CURRENT_BINARY_DIR}/${package_config}"
+    INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_folder}"
 )
 
 write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/${package_name}-config-version.cmake"
-    VERSION       ${${PROJECT_NAME}_VERSION}
+    "${CMAKE_CURRENT_BINARY_DIR}/${package_config_version}"
+    VERSION       ${package_version}
     COMPATIBILITY SameMajorVersion
 )
 
@@ -50,20 +59,20 @@ write_basic_package_version_file(
 
 install(
     TARGETS      ${package_name}
-    EXPORT       ${package_name}-targets
+    EXPORT       ${package_target}
 #   INCLUDES DESTINATION "${...}"  # already set via target_include_directories()
 )
 
 install(
-    EXPORT       ${package_name}-targets
-    NAMESPACE    ${package_name}::
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_name}"
+    EXPORT       ${package_target}
+    NAMESPACE    ${package_nspace}
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_folder}"
 )
 
 install(
-    FILES       "${CMAKE_CURRENT_BINARY_DIR}/${package_name}-config.cmake"
-                "${CMAKE_CURRENT_BINARY_DIR}/${package_name}-config-version.cmake"
-    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_name}"
+    FILES       "${CMAKE_CURRENT_BINARY_DIR}/${package_config}"
+                "${CMAKE_CURRENT_BINARY_DIR}/${package_config_version}"
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_folder}"
 )
 
 install(
