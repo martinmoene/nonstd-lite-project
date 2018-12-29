@@ -10,11 +10,8 @@ cmake_minimum_required( VERSION 3.5 )
 project( test LANGUAGES CXX )
 
 set( MAIN_BASE xxx-main )
-set( HDRNAME   xxx.hpp    )
+set( PACKAGE   xxx-lite )
 set( SOURCES   ${MAIN_BASE}.t.cpp xxx.t.cpp )
-
-set( HDRDIR  ${PROJECT_SOURCE_DIR}/../include/nonstd )
-set( HDRPATH ${HDRDIR}/${HDRNAME} )
 
 # option text to Boolean:
 
@@ -133,10 +130,11 @@ endfunction()
 function( make_target target std )
     message( STATUS "Make target: '${std}'" )
 
-    add_executable            ( ${target} ${SOURCES} ${HDRPATH} )
+    add_executable            ( ${target} ${SOURCES} )
+    target_link_libraries     ( ${target} PRIVATE ${PACKAGE} )
     target_compile_options    ( ${target} PRIVATE ${OPTIONS} )
     target_compile_definitions( ${target} PRIVATE ${DEFINITIONS} )
-    target_include_directories( ${target} PRIVATE ${HDRDIR} )
+
     if( std )
         if( MSVC )
             target_compile_options( ${target} PRIVATE -std:c++${std} )
