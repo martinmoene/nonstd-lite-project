@@ -2,6 +2,8 @@
 
 cmake_minimum_required( VERSION 3.5 FATAL_ERROR )
 
+set( PACKAGE ${package_name} )
+
 project(
     producer_test
     VERSION 0.1.0
@@ -17,11 +19,8 @@ add_executable(
     producer.t.cpp
 )
 
-target_include_directories(
-    producer_test
-    PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
-        $<INSTALL_INTERFACE:include>
+target_link_libraries(
+    producer_test PRIVATE ${PACKAGE}
 )
 
 # end of file

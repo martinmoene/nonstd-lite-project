@@ -11,7 +11,8 @@ project(
 
 # Package information:
 
-set( package_name    "producer-lite" )
+set( unit_name       "producer"          CACHE STRING "Name of the unit" )
+set( package_name    "${unit_name}-lite" CACHE STRING "Name of the package" )
 set( package_version "${${PROJECT_NAME}_VERSION}" )
 
 message( STATUS "Project '${PROJECT_NAME}', package '${package_name}' version: '${package_version}'")
