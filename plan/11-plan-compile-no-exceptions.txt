@@ -1,0 +1,36 @@
+Commit: Enable compilation without exceptions (nonstd-lite-project issue #4)
+
+File: file/...
+
+Readme:
+
+### Disable exceptions
+-D<b>xxx_CONFIG_NO_EXCEPTIONS</b>=0
+Define this to 1 if you want to compile without exceptions. If not defined, the header tries and detect if exceptions have been disabled (e.g. via `-fno-exceptions`). Default is undefined.
+
+
+Header:
+
+// Control presence of exception handling (try and auto discover):
+
+#ifndef xxx_CONFIG_NO_EXCEPTIONS
+# if defined(__cpp_exceptions) || defined(__EXCEPTIONS) || defined(_CPPUNWIND)
+#  define xxx_CONFIG_NO_EXCEPTIONS  0
+# else
+#  define xxx_CONFIG_NO_EXCEPTIONS  1
+# endif
+#endif
+
+// ...
+
+#if xxx_HAVE_NOEXCEPT && ! xxx_CONFIG_NO_EXCEPTIONS
+# define xxx_noexcept noexcept
+#else
+# define xxx_noexcept /*noexcept*/
+#endif
+
+// additional includes:
+
+#if any_CONFIG_NO_EXCEPTIONS
+# include <cassert>
+#endif
