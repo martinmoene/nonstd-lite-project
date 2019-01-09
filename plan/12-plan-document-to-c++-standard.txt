@@ -1,0 +1,23 @@
+Commit: 
+
+Document to C++ standard (nonstd-lite-project issue 2)
+
+https://github.com/martinmoene/nonstd-lite-project/issues/2
+
+
+File: -
+
+
+Readme:
+
+Aim: Use the tables to only show the differences between `nonstd::xxx` and `std::xxx`.
+
+Documentation of `std::xxx`
+----------------------------
+Depending on the compiler and C++-standard used, `nonstd::xxx` behaves less or more like `std::xxx`. To get an idea of the capabilities of `nonstd::xxx` with your configuration, look at the output of the [tests](test/xxx.t.cpp), issuing `xxx-main.t --pass @`. For `std::xxx`, see its [documentation at cppreference](http://en.cppreference.com/w/cpp/container/xxx).  
+
+Non-standard extensions
+-----------------------
+
+
+Header: -

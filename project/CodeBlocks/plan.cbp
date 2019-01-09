@@ -40,6 +40,7 @@
 		<Unit filename="../../plan/09-plan-build-appveyor.txt" />
 		<Unit filename="../../plan/10-plan-build-travis.txt" />
 		<Unit filename="../../plan/11-plan-compile-no-exceptions.txt" />
+		<Unit filename="../../plan/12-plan-document-to-c++-standard.txt" />
 		<Unit filename="../../test/combine-any-exp-opt-var.cpp" />
 		<Unit filename="../../test/combine-exp-std-any-opt-var.cpp" />
 		<Extensions>
