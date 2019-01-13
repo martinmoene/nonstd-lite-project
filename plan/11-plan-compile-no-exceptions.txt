@@ -20,6 +20,24 @@ CASE( "xxx-lite configuration" "[.xxx][.config]" )
 }
 
 
+Example (xx-no-exceptions.cpp):
+
+#include "nonstd/xxx.hpp"
+
+using nonstd::xxx;
+
+int main()
+{
+    ....
+
+    ...;   // ok
+    ...;   // asserts  asserts (normally throws) [if such response exists]
+}
+
+// cl -nologo -I../include xx-no-exceptions.cpp && xx-no-exceptions
+// g++ -Wall -fno-exceptions -I../include -o xx-no-exceptions xx-no-exceptions.cpp && xx-no-exceptions
+
+
 Header:
 
 // Control presence of exception handling (try and auto discover):
@@ -34,7 +52,7 @@ Header:
 
 // ...
 
-#if xxx_HAVE_NOEXCEPT && ! xxx_CONFIG_NO_EXCEPTIONS
+#if xxx_HAVE_NOEXCEPT // && ! xxx_CONFIG_NO_EXCEPTIONS
 # define xxx_noexcept noexcept
 #else
 # define xxx_noexcept /*noexcept*/
