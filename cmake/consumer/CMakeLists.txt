@@ -26,6 +26,6 @@ add_executable(
 
 target_link_libraries(
     consumer
-    producer-lite::producer-lite )
+    producer-namespace::producer-lite )
 
 # end of file

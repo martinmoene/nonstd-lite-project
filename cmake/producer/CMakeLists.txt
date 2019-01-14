@@ -11,8 +11,9 @@ project(
 
 # Package information:
 
-set( unit_name       "producer"          CACHE STRING "Name of the unit" )
-set( package_name    "${unit_name}-lite" CACHE STRING "Name of the package" )
+set( unit_name       "producer" )
+set( package_nspace  "producer-namespace" )
+set( package_name    "${unit_name}-lite" )
 set( package_version "${${PROJECT_NAME}_VERSION}" )
 
 message( STATUS "Project '${PROJECT_NAME}', package '${package_name}' version: '${package_version}'")
@@ -47,7 +48,7 @@ add_library(
     ${package_name} INTERFACE )
 
 add_library(
-    ${package_name}::${package_name} ALIAS ${package_name} )
+    ${package_nspace}::${package_name} ALIAS ${package_name} )
 
 target_include_directories(
     ${package_name}
@@ -59,7 +60,6 @@ target_include_directories(
 # Note: package_name and package_target are used in package_config_in
 
 set( package_folder         "${package_name}" )
-set( package_nspace         "${package_name}::" )
 set( package_target         "${package_name}-targets" )
 set( package_config         "${package_name}-config.cmake" )
 set( package_config_in      "${package_name}-config.cmake.in" )
@@ -87,7 +87,7 @@ install(
 
 install(
     EXPORT       ${package_target}
-    NAMESPACE    ${package_nspace}
+    NAMESPACE    ${package_nspace}::
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${package_folder}"
 )
 
