@@ -1,0 +1,23 @@
+Commit: 
+
+[skip ci] Add conanfile.py, edit it from script/update-version.py (nonstd-lite-project issue 26)
+
+https://github.com/martinmoene/nonstd-lite-project/issues/26
+
+
+Commands used for any-lite:
+
+conan create . nonstd-lite/testing
+conan upload --remote nonstd-lite any-lite/0.1.0@nonstd-lite/testing
+
+conan remove any-lite/0.1.0@nonstd-lite/testing
+conan upload --force --remote nonstd-lite any-lite/0.1.0@nonstd-lite/testing
+
+
+File: -
+
+
+Readme:
+
+
+Header: -
