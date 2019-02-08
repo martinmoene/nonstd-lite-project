@@ -22,6 +22,7 @@
 		<Unit filename="../../file/appveyor.yml" />
 		<Unit filename="../../file/conanfile.py" />
 		<Unit filename="../../file/script/update-version.py" />
+		<Unit filename="../../file/script/upload-conan.py" />
 		<Unit filename="../../file/test/CMakeLists.txt" />
 		<Unit filename="../../file/test/t.bat" />
 		<Unit filename="../../file/test/tc.bat" />
