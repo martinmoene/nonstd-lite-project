@@ -27,5 +27,5 @@ Header:
 Readme:
 
 ### Standard selection macro
-\-D<b>xxx\_CPLUSPLUS</b>=199711L
+\-D<b>xxx\_CPLUSPLUS</b>=199711L  
 Define this macro to override the auto-detection of the supported C++ standard, or if your compiler does not set the `__cplusplus` macro correctly.
