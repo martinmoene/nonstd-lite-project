@@ -3,6 +3,7 @@
 	<Workspace title="Nonstd Lite Project">
 		<Project filename="../../../../GitHub-Pre/IsoCpp/gsl-lite/project/gsl-lite.cbp" />
 		<Project filename="../../../any-lite/project/CodeBlocks/any-lite.cbp" />
+		<Project filename="../../../atomic-lite/project/CodeBlocks/atomic-lite.cbp" />
 		<Project filename="../../../byte-lite/project/CodeBlocks/byte-lite.cbp" />
 		<Project filename="../../../expected-lite/project/CodeBlocks/expected-lite.cbp" />
 		<Project filename="../../../invoke-lite/project/CodeBlocks/invoke-lite.cbp" />
@@ -18,6 +19,7 @@
 		<Project filename="../../../type-lite/project/CodeBlocks/type-lite.cbp" />
 		<Project filename="../../../value-ptr-lite/project/CodeBlocks/value-ptr-lite.cbp" />
 		<Project filename="../../../variant-lite/project/CodeBlocks/variant-lite.cbp" />
+		<Project filename="../../../nonstd-lite/_project/CodeBlocks/nonstd-lite.cbp" />
 		<Project filename="cmake.cbp" />
 		<Project filename="plan.cbp" />
 		<Project filename="../../../lest-variants/lest-non-git/lest.cbp" />
