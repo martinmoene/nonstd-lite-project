@@ -1,0 +1,58 @@
+Commit:
+
+Add 'Tweak header' support via 'nonstd/{xxx}.tweak.hpp'
+
+
+File:
+
+Readme:
+
+### Tweak header
+
+If the compiler supports [`__has_include()`](https://en.cppreference.com/w/cpp/preprocessor/include), *{xxx} lite* supports the [tweak header](https://vector-of-bool.github.io/2020/10/04/lib-configuration.html) mechanism. Provide your *tweak header* as `nonstd/{xxx}.tweak.hpp` in a folder in the include-search-path. In the tweak header, provide definitions as documented below, like `#define {yyy}_CONFIG_NO_EXCEPTIONS 1`.
+
+
+Header:
+
+// tweak header support:
+
+#ifdef __has_include
+# if __has_include(<nonstd/{xxx}.tweak.hpp>)
+#  include <nonstd/{xxx}.tweak.hpp>
+# endif
+#define {yyy}_HAVE_TWEAK_HEADER  1
+#else
+#define {yyy}_HAVE_TWEAK_HEADER  0
+//# pragma message("{xxx}.hpp: Note: Tweak header not supported.")
+#endif
+
+
+Test:
+
+CASE( "tweak header: reads tweak header if supported " "[tweak]" )
+{
+#if nssv_HAVE_TWEAK_HEADER
+    EXPECT( {XXX}_TWEAK_VALUE == 42 );
+#else
+    EXPECT( !!"Tweak header is not available ({yyy}_HAVE_TWEAK_HEADER:0)." );
+#endif
+}
+
+
+test/nonstd/{xxx}.tweak.hpp:
+
+#define {XXX}_TWEAK_VALUE 42
+
+
+test/CMakefiles.txt:
+
+set( HEADER    "nonstd/string_view.hpp" )
+set( TWEAKD    "." )  <===
+
+    add_executable            ( ${target} ${SOURCES} )
+    target_include_directories( ${target} PRIVATE ${TWEAKD} )  <===
+
+
+test/t.bat, tc.bat, tg.bat:
+
+Add -I. as include-search-path for tweak header: s/-I../include/-I../include -I./
