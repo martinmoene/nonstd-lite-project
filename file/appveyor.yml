@@ -36,7 +36,7 @@ matrix:
 
 before_build:
     - mkdir build && cd build
-    - cmake -A %platform% -G "%generator%" -DXXX_LITE_OPT_SELECT_NONSTD=ON -DXXX_LITE_BUILD_TESTS=ON -DXXX_LITE_BUILD_EXAMPLES=OFF ..
+    - cmake -A %platform% -G "%generator%" -DCMAKE_CXX_FLAGS:="-Dxxx_CONFIG_SELECT_XXX=xxx_XXX_NONSTD" -DXXX_LITE_BUILD_TESTS=ON -DXXX_LITE_BUILD_EXAMPLES=OFF ..
 
 build_script:
     - cmake --build . --config %configuration%
