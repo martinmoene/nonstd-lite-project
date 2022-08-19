@@ -1,6 +1,7 @@
-# Copyright 2018 by Martin Moene
+# Copyright 2018-2022 by Martin Moene
 #
 # https://github.com/martinmoene/xxx-lite
+# https://github.com/martinmoene/nonstd-lite-project/file/test/CMakeLists.txt
 #
 # Distributed under the Boost Software License, Version 1.0.
 # (See accompanying file LICENSE.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -11,7 +12,7 @@ endif()
 
 project( test LANGUAGES CXX )
 
-set( unit_name "xxx" )
+# unit_name provided by toplevel CMakeLists.txt [set( unit_name "xxx" )]
 set( PACKAGE   ${unit_name}-lite )
 set( PROGRAM   ${unit_name}-lite )
 set( SOURCES   ${unit_name}-main.t.cpp ${unit_name}.t.cpp )
@@ -146,8 +147,8 @@ function( make_target target std )
     message( STATUS "Make target: '${std}'" )
 
     add_executable            ( ${target} ${SOURCES} )
-    target_include_directories( ${target} PRIVATE ${TWEAKD} )
     target_include_directories( ${target} SYSTEM  PRIVATE lest )
+    target_include_directories( ${target} PRIVATE ${TWEAKD} )
     target_link_libraries     ( ${target} PRIVATE ${PACKAGE} )
     target_compile_options    ( ${target} PRIVATE ${OPTIONS} )
     target_compile_definitions( ${target} PRIVATE ${DEFINITIONS} )
@@ -204,9 +205,9 @@ else()
     endif()
 endif()
 
-# with C++17, honour explicit request for std::xxx or nonstd::xxx:
+# with C++17 and later, honour explicit request for std::xxx or nonstd::xxx:
 
-if( HAS_CPP17_FLAG )
+if( HAS_CPP17_FLAG OR HAS_CPP20_FLAG )
     set( WHICH xxx_XXX_DEFAULT )
 
     if( XXX_LITE_OPT_SELECT_STD )
@@ -215,7 +216,15 @@ if( HAS_CPP17_FLAG )
         set( WHICH xxx_XXX_NONSTD )
     endif()
 
-    target_compile_definitions( ${PROGRAM}-cpp17.t PRIVATE xxx_CONFIG_SELECT_XXX=${WHICH} )
+    message( STATUS "Subproject '${PROJECT_NAME}', C++17 and later using '${WHICH}'")
+
+    if( HAS_CPP17_FLAG )
+        target_compile_definitions( ${PROGRAM}-cpp17.t PRIVATE xxx_CONFIG_SELECT_XXX=${WHICH} )
+        endif()
+
+    if( HAS_CPP20_FLAG )
+        target_compile_definitions( ${PROGRAM}-cpp20.t PRIVATE xxx_CONFIG_SELECT_XXX=${WHICH} )
+    endif()
 
     if( HAS_CPPLATEST_FLAG )
         target_compile_definitions( ${PROGRAM}-cpplatest.t PRIVATE xxx_CONFIG_SELECT_XXX=${WHICH} )
