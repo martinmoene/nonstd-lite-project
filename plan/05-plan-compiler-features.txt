@@ -49,6 +49,7 @@ ___
 #define xxx_HAVE_IS_DEFAULT            xxx_CPP11_140
 #define xxx_HAVE_IS_DELETE             xxx_CPP11_140
 #define xxx_HAVE_NOEXCEPT              xxx_CPP11_140
+#define xxx_HAVE_NORETURN            ( xxx_CPP11_140 && ! xxx_BETWEEN( xxx_COMPILER_GNUC_VERSION, 1, 480 ) )
 
 // Presence of C++14 language features:
 
@@ -57,7 +58,6 @@ ___
 // Presence of C++17 language features:
 
 #define xxx_HAVE_NODISCARD             xxx_CPP17_000
-#define xxx_HAVE_NORETURN              xxx_CPP17_000
 
 // MSVC: template parameter deduction guides since Visual Studio 2017 v15.7
 
